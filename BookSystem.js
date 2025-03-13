@@ -34,6 +34,21 @@ function listAvailableBooks() {
     return books.filter(book => !book.isBorrowed);
 }
 
+document.getElementById("add").onclick = ()=>{
+    let Title = prompt("What is the book Title");
+    let Author = prompt("who is the book Author");
+    addBook(Title,Author,false);
+}
+
+document.getElementById("remove").onclick = ()=>{
+    let id = parseInt(prompt("What is the book ID"));
+    removeBook(id);
+}
+
+document.getElementById("List").onclick = ()=>{
+    console.log(listAvailableBooks());
+}
+
 // =============================
 // MEMBER 2: Borrowing System
 // =============================
@@ -64,15 +79,15 @@ function returnBook(id) {
 function allBorrowed() {
     return (books.filter(book => book.isBorrowed));
 }
+
+// events
 document.getElementById("borrow").onclick=()=>{
     let id = prompt("Give me the book id");
     borrowBook(id)
-    console.log(books);
 }
 document.getElementById("return").onclick=()=>{
     let id = prompt("Give me the book id");
     returnBook(id)
-    console.log(books);
 }
 document.getElementById("all").onclick=()=>{
     console.log(allBorrowed())
@@ -127,6 +142,4 @@ function generateReport() {
     };
 }
 
-// Example usage
-console.log(listAvailableBooks());
-console.log(generateReport());
+document.getElementById("report").onclick = ()=>{console.log(generateReport())}
